@@ -32,7 +32,6 @@
 *.app
 
 # Project
-*.project
 *.mk
 
 # Others
