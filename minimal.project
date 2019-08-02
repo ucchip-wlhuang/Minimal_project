@@ -90,6 +90,10 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
+	<File Name="NewText.cpp"/>
+	<File Name="globals.h"/>
     <File Name="main.cpp"/>
+	<File Name="NewText.h"/>
+	<File Name="mainframe.h"/>
   </VirtualDirectory>
 </CodeLite_Project>
