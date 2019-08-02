@@ -1,3 +1,4 @@
+
 #include "mainframe.h"
 
 wxAuiNotebook* MyFrame::CreateNote()
@@ -200,7 +201,6 @@ void MyFrame::OnNew(wxCommandEvent& WXUNUSED(event))
     char str[18];
     sprintf(str, "Untitled%d", ++i);
     wxString wxstr(str);
-	wxTextCtrl* newText = new wxTextCtrl(right_win_un, wxID_ANY, wxEmptyString, wxDefaultPosition, right_win_un->GetSize(), wxTE_MULTILINE | wxTE_PROCESS_TAB );
+	wxTextCtrl* newText = new NewText(right_win_un);
     right_win_un->AddPage(newText, wxstr, true, page_bmp);
-
 }
