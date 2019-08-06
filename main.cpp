@@ -59,7 +59,8 @@ MyFrame::MyFrame(const wxString& title, const wxSize &size, const wxPoint &pos)
     wxMenu *helpMenu = new wxMenu;
     wxMenu *editMenu = new wxMenu;
     wxMenu *viewMenu = new wxMenu;
-    
+    wxMenu *wizardMenu = new wxMenu;
+	
     wxMenu *newFile = new wxMenu;
     //tree constuction
     helpMenu->Append(Minimal_About, wxT("Ab&out\tF1"), "Show about dialog");
@@ -76,12 +77,15 @@ MyFrame::MyFrame(const wxString& title, const wxSize &size, const wxPoint &pos)
     viewMenu->AppendSeparator();
     viewMenu->AppendRadioItem(Minimal_White, "White", "I don't know");
     viewMenu->AppendRadioItem(Minimal_Black, "Black", "I don't know");
+	
+	wizardMenu->Append(Minimal_Newproject, "New Project\tAlt-P", "New Project Wizard");
     
     // now append the freshly created menu to the menu bar...
     wxMenuBar *menuBar = new wxMenuBar();
     menuBar->Append(fileMenu, "File");
     menuBar->Append(editMenu, "Edit");
     menuBar->Append(viewMenu, "View");
+	menuBar->Append(wizardMenu, "Wizard");
     menuBar->Append(helpMenu, "Help");
 
     // ... and attach this menu bar to the frame
@@ -203,4 +207,10 @@ void MyFrame::OnNew(wxCommandEvent& WXUNUSED(event))
     wxString wxstr(str);
 	wxTextCtrl* newText = new NewText(right_win_un);
     right_win_un->AddPage(newText, wxstr, true, page_bmp);
+}
+
+void MyFrame::OnNewProjectWizard(wxCommandEvent& WXUNUSED(event))
+{
+	NewProjectWizard wiz(this);
+	wiz.RunWizard(wiz.GetFirstPage());
 }
