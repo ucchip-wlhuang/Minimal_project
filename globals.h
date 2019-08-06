@@ -17,6 +17,7 @@
 #include <wx/checkbox.h>
 #include <wx/bannerwindow.h>
 #include <wx/settings.h>
+#include <wx/dataview.h>
 #include "sample.xpm"
 #include "bitmaps/open.xpm"
 #include "bitmaps/save.xpm"
