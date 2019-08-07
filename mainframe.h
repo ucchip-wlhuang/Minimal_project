@@ -1,6 +1,7 @@
 
 #include "globals.h"
 #include "NewText.h"
+#include "NewProjectWizard.h"
 
 class MyApp : public wxApp
 {
@@ -19,7 +20,7 @@ public:
     void OnAbout(wxCommandEvent& event);
     void OnUndo(wxCommandEvent& event);
     void OnNew(wxCommandEvent& event);
-    void OnSize(wxSizeEvent& event);
+	void OnNewProjectWizard(wxCommandEvent& event);
     
 
 private:
@@ -47,8 +48,10 @@ enum
     Minimal_Output,
     Minimal_Debugger,
     Minimal_White,
-    Minimal_Black
+    Minimal_Black,
+	Minimal_Newproject
 };
+
 // ----------------------------------------------------------------------------
 // event tables and other macros for wxWidgets
 // ----------------------------------------------------------------------------
@@ -58,6 +61,7 @@ wxBEGIN_EVENT_TABLE(MyFrame, wxFrame)
     EVT_MENU(Minimal_Quit,  MyFrame::OnQuit)
     EVT_MENU(Minimal_About, MyFrame::OnAbout)
     EVT_MENU(Minimal_Undo, MyFrame::OnUndo)
+	EVT_MENU(Minimal_Newproject, MyFrame::OnNewProjectWizard)
 wxEND_EVENT_TABLE()
 
 wxIMPLEMENT_APP(MyApp);     //implement app
