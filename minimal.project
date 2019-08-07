@@ -92,6 +92,8 @@
   <VirtualDirectory Name="src">
     <File Name="NewProjectWizard.h"/>
     <File Name="NewProjectWizard.cpp"/>
+	<File Name="dvtemplatesmodel.h"/>
+    <File Name="dvtemplatesmodel.cpp"/>
     <File Name="NewText.cpp"/>
     <File Name="globals.h"/>
     <File Name="main.cpp"/>

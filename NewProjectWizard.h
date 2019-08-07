@@ -1,4 +1,5 @@
 #include "globals.h"
+#include "dvtemplatesmodel.h"
 #include <wx/wizard.h>
 
 enum
@@ -17,12 +18,15 @@ public:
 	}
 private:
 	wxWizardPageSimple* first_page;
+	//wxObjectDataPtr<DVTemplatesModel> dv_templatesModel;
 };
 
 class TemplatePage : public wxWizardPageSimple
 {
 public:
 	TemplatePage(wxWizard *parent);
+private:
+	wxObjectDataPtr<DVTemplatesModel> dv_templatesModel;
 };
 
 class InfoPage : public wxWizardPageSimple

@@ -23,8 +23,8 @@ TemplatePage::TemplatePage(wxWizard *parent) : wxWizardPageSimple(parent)
 	wxDataViewCtrl* dv_templates = new wxDataViewCtrl(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxDV_ROW_LINES|wxDV_SINGLE);
 	dv_templates->SetFocus();
 	dv_templates->AppendIconTextColumn(_("Template"), dv_templates->GetColumnCount(), wxDATAVIEW_CELL_INERT, 450, wxALIGN_LEFT, wxDATAVIEW_COL_RESIZABLE);
-	//wxDataViewModel* dv_templatesModel = new wxDataViewModel;   //create new class base on wxDataViewModel
-	//dv_templates->AssociateModel(dv_templatesModel);  //dv_templatesModel.gets()
+	dv_templatesModel = new DVTemplatesModel;   //create new class base on wxDataViewModel
+	dv_templates->AssociateModel(dv_templatesModel.get());  //dv_templatesModel.gets()
 	
 	sizer->Add(title, wxSizerFlags().Expand());
 	sizer->Add(dv_templates, 1, wxALL|wxEXPAND, wxBorder(5));
