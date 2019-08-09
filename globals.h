@@ -18,6 +18,8 @@
 #include <wx/bannerwindow.h>
 #include <wx/settings.h>
 #include <wx/dataview.h>
+#include <wx/dialog.h>
+#include <wx/filedlg.h>
 #include "sample.xpm"
 #include "bitmaps/open.xpm"
 #include "bitmaps/save.xpm"

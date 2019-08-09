@@ -2,6 +2,7 @@
 #include "globals.h"
 #include "NewText.h"
 #include "NewProjectWizard.h"
+#include "ZipDialog.h"
 
 class MyApp : public wxApp
 {
@@ -21,6 +22,9 @@ public:
     void OnUndo(wxCommandEvent& event);
     void OnNew(wxCommandEvent& event);
 	void OnNewProjectWizard(wxCommandEvent& event);
+	void OnOpenWorkspace(wxCommandEvent& event);
+	void OnRmFile(wxCommandEvent& event);
+	void OnUpdatemenu(wxUpdateUIEvent& event);
     
 
 private:
@@ -28,6 +32,13 @@ private:
     int client_w, client_h;
     // event table
     wxDECLARE_EVENT_TABLE();
+	wxMenu *fileMenu = new wxMenu;
+    wxMenu *helpMenu = new wxMenu;
+    wxMenu *editMenu = new wxMenu;
+    wxMenu *viewMenu = new wxMenu;
+    wxMenu *wizardMenu = new wxMenu;
+	
+    wxMenu *newFile = new wxMenu;
 };
 
 // ----------------------------------------------------------------------------
@@ -49,7 +60,8 @@ enum
     Minimal_Debugger,
     Minimal_White,
     Minimal_Black,
-	Minimal_Newproject
+	Minimal_Newproject,
+	Minimal_RmFile
 };
 
 // ----------------------------------------------------------------------------
@@ -62,6 +74,9 @@ wxBEGIN_EVENT_TABLE(MyFrame, wxFrame)
     EVT_MENU(Minimal_About, MyFrame::OnAbout)
     EVT_MENU(Minimal_Undo, MyFrame::OnUndo)
 	EVT_MENU(Minimal_Newproject, MyFrame::OnNewProjectWizard)
+	EVT_MENU(Minimal_Workspace, MyFrame::OnOpenWorkspace)
+	EVT_MENU(Minimal_RmFile, MyFrame::OnRmFile)
+	EVT_UPDATE_UI(Minimal_WordWrap, MyFrame::OnUpdatemenu)
 wxEND_EVENT_TABLE()
 
 wxIMPLEMENT_APP(MyApp);     //implement app

@@ -55,13 +55,6 @@ MyFrame::MyFrame(const wxString& title, const wxSize &size, const wxPoint &pos)
     this->SetMinSize(wxSize(200,150));
 
 #if wxUSE_MENUS
-    wxMenu *fileMenu = new wxMenu;
-    wxMenu *helpMenu = new wxMenu;
-    wxMenu *editMenu = new wxMenu;
-    wxMenu *viewMenu = new wxMenu;
-    wxMenu *wizardMenu = new wxMenu;
-	
-    wxMenu *newFile = new wxMenu;
     //tree constuction
     helpMenu->Append(Minimal_About, wxT("Ab&out\tF1"), "Show about dialog");
     fileMenu->Append(Minimal_New, "New", newFile);                    //unit as menu,1:1
@@ -79,6 +72,7 @@ MyFrame::MyFrame(const wxString& title, const wxSize &size, const wxPoint &pos)
     viewMenu->AppendRadioItem(Minimal_Black, "Black", "I don't know");
 	
 	wizardMenu->Append(Minimal_Newproject, "New Project\tAlt-P", "New Project Wizard");
+	wizardMenu->Append(Minimal_RmFile, "Remove File\tAlt-P", "Remove File");
     
     // now append the freshly created menu to the menu bar...
     wxMenuBar *menuBar = new wxMenuBar();
@@ -213,4 +207,44 @@ void MyFrame::OnNewProjectWizard(wxCommandEvent& WXUNUSED(event))
 {
 	NewProjectWizard wiz(this);
 	wiz.RunWizard(wiz.GetFirstPage());
+}
+
+void MyFrame::OnOpenWorkspace(wxCommandEvent& WXUNUSED(event))
+{
+	/*xUnusedVar(evt);
+	
+    wxTreeItemId item = GetSingleSelection();
+    CHECK_ITEM_RET(item);
+
+    FilewViewTreeItemData* data = static_cast<FilewViewTreeItemData*>(GetItemData(item));
+    CHECK_PTR_RET(data);
+
+    if(data->GetData().GetKind() != ProjectItem::TypeWorkspaceFolder) return;
+    wxString workspaceFolder = data->GetData().Key();
+	 */
+    const wxString ALL(wxT("CodeLite Projects (*.project)|*.project|") wxT("All Files (*)|*"));
+    wxFileDialog dlg(this, _("Open Project"), wxEmptyString, wxEmptyString, ALL, wxFD_OPEN | wxFD_FILE_MUST_EXIST,
+                     wxDefaultPosition);
+    if(dlg.ShowModal() == wxID_OK) {
+        //wxString errmsg;clTabCtrl
+        //if(!clCxxWorkspaceST::Get()->AddProject(dlg.GetPath(), workspaceFolder, errmsg)) {
+        //    ::wxMessageBox(errmsg, "CodeLite", wxICON_ERROR | wxOK | wxCENTER, EventNotifier::Get()->TopFrame());
+        //}
+    }
+
+    // Fire "Project-Added" event
+    //clCommandEvent evtProjectAdded(wxEVT_PROJ_ADDED);
+    //EventNotifier::Get()->AddPendingEvent(evtProjectAdded);
+}
+
+
+void MyFrame::OnUpdatemenu(wxUpdateUIEvent& event)
+{
+	event.Enable(viewMenu->IsChecked(Minimal_Output));
+}
+
+void MyFrame::OnRmFile(wxCommandEvent& event)
+{
+	ZipDialog dlg(this);
+	dlg.ShowModal();
 }

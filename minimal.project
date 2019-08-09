@@ -90,9 +90,11 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
+    <File Name="ZipDialog.h"/>
+    <File Name="ZipDialog.cpp"/>
     <File Name="NewProjectWizard.h"/>
     <File Name="NewProjectWizard.cpp"/>
-	<File Name="dvtemplatesmodel.h"/>
+    <File Name="dvtemplatesmodel.h"/>
     <File Name="dvtemplatesmodel.cpp"/>
     <File Name="NewText.cpp"/>
     <File Name="globals.h"/>
